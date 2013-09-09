@@ -1,0 +1,39 @@
+{
+  "name": "testing-brownbag",
+  "version": "0.0.0",
+  "description": "Tests are good, mmkay!?",
+  "scripts": {
+    "start": "supervisor coffee src/app.coffee",
+    "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script -R spec ./test/server",
+    "test-watch": "nodemon -w ./test/server ./node_modules/.bin/mocha --compilers coffee:coffee-script -R spec ./test/server",
+    "test-ng": "./node_modules/.bin/karma start ./test/client/karma.conf.js"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "gitHead": "023a8c90efa5f3ffd6d826dd292be8ce84840c12",
+  "devDependencies": {
+    "mocha": "~1.12.1",
+    "expect.js": "~0.2.0",
+    "nodemon": "~0.7.10",
+    "mockery": ">=1.4.0",
+    "sinon": ">=1.7.3",
+    "nodejscheck": ">=0.2.4",
+    "karma": ">=0.9.6",
+    "karma-mocha": ">=0.0.4",
+    "karma-coverage": ">=0.0.4",
+    "karma-expect": ">=0.0.3",
+    "karma-browserify": ">=0.0.4",
+    "coffeeify": "~0.5.1",
+    "supervisor": "~0.5.5"
+  },
+  "dependencies": {
+    "coffee-script": "~1.6.3",
+    "jade": "~0.35.0",
+    "express": "~3.4.0",
+    "stylus": "~0.37.0",
+    "nib": "~1.0.1",
+    "express-livereload": "0.0.24",
+    "browserify-middleware": "~1.17.2"
+  }
+}

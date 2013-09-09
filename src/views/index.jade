@@ -1,0 +1,32 @@
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    != LRScript
+
+  body
+    h1 Angular minesweeper!
+
+    div(ng-app='minesweeper', ng-controller='grid')
+      h2 {{minesweeper.status}}
+
+      div
+        .row.cf(ng-repeat='row in rows')
+          .cell(ng-repeat='cell in row', ng-class='{ covered: cell.isCovered }', ng-click='actions.clickCell()', ng-controller='cell')
+            .bomb(ng-if='cell.isBomb && !cell.isCovered') X
+            .empty(ng-if='!cell.isBomb && !cell.isCovered') {{cell.neighbourBombs | number}}
+        div
+          button(ng-click='actions.reset()') Reset
+
+      ul
+        li(ng-repeat='game in minesweeper.games track by $index')
+          a(href='#', ng-click='actions.viewGame($index)') {{game.steps.length}} Steps
+
+    script(src='/scripts/jquery-2.0.2.min.js')
+    script(src='/scripts/angular-1.1.5.min.js')
+    script(src='/js/minesweeper.js')
+
+
+  
+
+
+
