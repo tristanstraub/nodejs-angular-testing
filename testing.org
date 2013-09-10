@@ -1,4 +1,4 @@
-q* Running...
+* Running...
 
   # Server side tests
 
@@ -24,16 +24,16 @@ q* Running...
 
 * Libraries for testing: mocha, expect.js, mockery, sinonjs
   
-[[file:///~/dev/projects/testing-brownbag/test/server/examples.coffee][test/server/examples.coffee]]  
-[[file:///~/dev/projects/testing-brownbag/test/server/history.coffee][test/server/history.coffee]]
+  [[file:///~/dev/projects/testing-brownbag/test/server/examples.coffee][test/server/examples.coffee]]  
+  [[file:///~/dev/projects/testing-brownbag/test/server/history.coffee][test/server/history.coffee]]
 
   npm run test
   npm run test-watch
 
 * Angular: testing controllers, services, etc...
 
-[[file:///~/dev/projects/testing-brownbag/test/client/karma.conf.js][test/client/karma.conf.js]]
-[[file:///~/dev/projects/testing-brownbag/test/client/unit/example.coffee][test/client/unit/example.coffee]]
+  [[file:///~/dev/projects/testing-brownbag/test/client/karma.conf.js][test/client/karma.conf.js]]
+  [[file:///~/dev/projects/testing-brownbag/test/client/unit/example.coffee][test/client/unit/example.coffee]]
 
   npm run test-ng
 
