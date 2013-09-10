@@ -1,6 +1,6 @@
 app = angular.module 'minesweeper', []
 
-app.service 'minesweeper', class MineSweeper
+app.service 'minesweeper', module.exports.MineSweeperService = class MineSweeper
   playing: false
   rows: []
   steps: []
@@ -11,7 +11,6 @@ app.service 'minesweeper', class MineSweeper
   @$inject: ['$http']
   constructor: (@http) ->
     @http.get('/data').success (data) =>
-      console.log data
       @games = data
 
   start: ->
@@ -22,6 +21,9 @@ app.service 'minesweeper', class MineSweeper
     @initGrid 10, 10
 
     return @rows
+
+  resetGame: ->
+    @start()
 
   viewGame: (index) ->
     @rows = @games[index].rows
@@ -52,7 +54,7 @@ app.service 'minesweeper', class MineSweeper
         @playing = false
         @status = 'LOST!'
         @saveGame()
-      
+
   initGrid: (w, h) ->
     nRows = w
     nCols = h
@@ -72,7 +74,7 @@ app.service 'minesweeper', class MineSweeper
 
     isBombInteger = (cell) ->
       if cell.isBomb then 1 else 0
-  
+
     getNeighboursBombCount = (cell) ->
       count = 0
       for u in [-1..1]
@@ -87,24 +89,22 @@ app.service 'minesweeper', class MineSweeper
 
     @rows = rows
 
-app.controller 'grid', ($scope, minesweeper) ->
+app.controller 'grid', module.exports.GridController = ($scope, minesweeper) ->
   $scope.minesweeper = minesweeper
 
   resetGame = ->
-    $scope.rows = minesweeper.start()
+    $scope.rows = minesweeper.resetGame()
 
   $scope.actions =
     reset: ->
       resetGame()
+
     viewGame: (index) ->
       $scope.rows = minesweeper.viewGame index
-      
 
   resetGame()
 
-app.controller 'cell', ($scope, minesweeper) ->
-  $scope.actions = 
+app.controller 'cell', module.exports.CellController = ($scope, minesweeper) ->
+  $scope.actions =
     clickCell: ->
-      minesweeper.clickedCell $scope.cell  
-
-
+      minesweeper.clickedCell $scope.cell
