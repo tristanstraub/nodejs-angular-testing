@@ -18,27 +18,3 @@ module.exports.writeEntry = (entry) ->
   entries.push entry
 
   storage.writeJsonFile historyPath, entries
-
-#-------- TESTS
-
-# expect = require 'expect.js'
-# mockery = require 'mockery'
-
-# describe 'history', ->
-#   afterEach ->
-#     mockery.disable()
-#     mockery.deregisterAll()
-
-#   beforeEach ->
-#     mockery.enable warnOnUnregistered: false, useCleanCache: true, warnOnReplace: false
-
-#   describe 'With mocking, ', ->
-#     it 'require can return null', ->
-#       mockery.registerMock './storage', null
-#       storage = require './storage'
-#       expect(storage).to.be null
-
-#     it 'require can return an object', ->
-#       mockery.registerMock './storage', null
-#       storage = require './storage'
-#       expect(storage).to.be
