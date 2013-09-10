@@ -10,18 +10,19 @@ describe 'minesweeper', ->
           resetGame: ->
 
         $provide.service 'minesweeper', MinesweeperServiceMock
+        $provide.value 'thing', {}
 
         # This has to be here or we get an error!
-        return null
+        return
 
     describe 'constructor', ->
       it 'calls minesweeper.start', ->
-        inject ($rootScope, $controller, minesweeper) ->
+        inject ($rootScope, $controller, minesweeper, PlannerCtrl) ->
           sinon.spy minesweeper, 'start'
 
-          $controller GridController, { $scope: $rootScope.$new() }
+          $controller PlannerCtrl, { $scope: $rootScope.$new() }
 
-          expect(minesweeper.start.calledOnce).to.be.true
+          expect(minesweeper.start.calledOnce).to.be true
 
     describe 'action', ->
       it 'reset should call minesweeper resetGame', ->
@@ -33,7 +34,7 @@ describe 'minesweeper', ->
           $controller GridController, { $scope: scope }
 
           scope.actions.reset()
-          expect(minesweeper.resetGame.calledOnce).to.be.true
+          expect(minesweeper.resetGame.calledOnce).to.be true
 
   describe 'service', ->
     it 'should call /data', ->

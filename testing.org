@@ -1,3 +1,12 @@
+* Unit testing nodejs/angular apps
+
+  - Using a test runner (mocha, karma)
+  - Server side tests
+  - Client side tests
+  - Using 'expect' to check expectations
+  - Mocking libraries ('require'd dependencies) using 'mockery'
+  - Testing angular controllers and services, and mocking $http
+
 * Running...
 
   # Server side tests
